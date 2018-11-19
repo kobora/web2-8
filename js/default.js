@@ -26,9 +26,18 @@ function getCookie(c_name){
     return unescape(document.cookie.substring(st,ed));
   }
 }
-return ""+
+return "";
 }
 
+var last_date = getCookie('lastDate');
+if(last_date){
+  document.getElementById('cookie').textContent = '前回訪れた時間 : ' + last_date;
+}else{
+  document.getElementById('cookie').textContent ='はじめまして';
+}
+
+var current_time = new Date();
+setCookie('lastDate', current_time.toString(), 7);
 
 function getFileName(){
   return window.location.href.split('/').pop();
